@@ -1,0 +1,7 @@
+Metti qui i file SVG (o PNG) dei cartelli, con il nome ESATTO indicato
+nella colonna "nome_file_proposto" del foglio "immagini_da_reperire.xlsx".
+
+Esempio: div_sorpasso-mezzi-oltre-35-t.svg
+
+Non servono sottocartelle: tutti i file vanno direttamente qui dentro,
+allo stesso livello di questo file.
