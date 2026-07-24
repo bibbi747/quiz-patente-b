@@ -8,10 +8,6 @@ import Icon from "@/components/Icon";
 // non appena il libro è pubblicato.
 const AMAZON_REVIEW_URL = "#";
 
-// TODO — sostituire con il link alla cartella Google Drive che contiene
-// i PDF delle domande, un file per capitolo, quando saranno pronti.
-const PDF_FOLDER_URL = "#";
-
 export default function HomePage() {
   const all = getAllQuestions();
   const parts = buildPartsWithCounts(all);
@@ -140,10 +136,10 @@ export default function HomePage() {
           </span>
           <h3>Scarica le domande</h3>
           <p>Allenati con le domande ufficiali MIT, capitolo per capitolo</p>
-          <a href={PDF_FOLDER_URL} className="btn-download">
+          <Link href="/scarica" className="btn-download">
             <Icon name="check" size={16} color="#fff" />
             Scarica PDF
-          </a>
+          </Link>
         </div>
       </div>
 
