@@ -1,5 +1,7 @@
 import "./globals.css";
 import Link from "next/link";
+import { AuthProvider } from "@/components/AuthProvider";
+import HeaderUser from "@/components/HeaderUser";
 
 export const metadata = {
   title: "Quiz Patente B — Esercitati con il manuale",
@@ -11,24 +13,39 @@ export default function RootLayout({ children }) {
   return (
     <html lang="it">
       <body>
-        <header className="site-header">
-          <div className="site-header-inner">
-            <Link href="/" className="brand">
-              <span className="brand-mark">PB</span>
-              Quiz Patente B
-            </Link>
-            <nav className="header-nav">
-              <Link href="/pratica">Pratica</Link>
-              <Link href="/esame">Simulazione esame</Link>
-            </nav>
-          </div>
-        </header>
-        <div className="road-divider" />
-        {children}
-        <footer className="site-footer">
-          Strumento gratuito abbinato al manuale Patente B — non sostituisce la
-          banca dati ufficiale del Ministero.
-        </footer>
+        <AuthProvider>
+          <header className="site-header">
+            <div className="site-header-inner">
+              <Link href="/" className="brand">
+                <span className="brand-mark">PB</span>
+                Quiz Patente B
+              </Link>
+
+              <nav
+                className="header-nav"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "18px",
+                }}
+              >
+                <Link href="/pratica">Pratica</Link>
+                <Link href="/esame">Simulazione esame</Link>
+
+                <HeaderUser />
+              </nav>
+            </div>
+          </header>
+
+          <div className="road-divider" />
+
+          {children}
+
+          <footer className="site-footer">
+            Strumento gratuito abbinato al manuale Patente B — non sostituisce
+            la banca dati ufficiale del Ministero.
+          </footer>
+        </AuthProvider>
       </body>
     </html>
   );

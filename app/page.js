@@ -38,7 +38,7 @@ export default function HomePage() {
         </div>
         <div className="hero-card-illustration">
           <img
-            src="/images/hero-car.png"
+            src="/images/hero-illustration.png"
             alt="Illustrazione di un'automobile su una strada cittadina"
           />
         </div>
@@ -117,29 +117,43 @@ export default function HomePage() {
 
       <div className="promo-row">
         <div className="promo-card review">
-          <span className="promo-card-icon">
-            <Icon name="check" />
-          </span>
-          <h3>Se ti è piaciuto questo libro</h3>
-          <p>Lascia una recensione su Amazon</p>
-          <div className="promo-stars" aria-hidden="true">
-            ★★★★★
+          <div className="promo-card-text">
+            <span className="promo-card-icon">
+              <Icon name="check" />
+            </span>
+            <h3>Se ti è piaciuto questo libro</h3>
+            <p>Lascia una recensione su Amazon</p>
+            <div className="promo-stars" aria-hidden="true">
+              ★★★★★
+            </div>
+            <a href={AMAZON_REVIEW_URL} className="btn-amazon">
+              amazon
+            </a>
           </div>
-          <a href={AMAZON_REVIEW_URL} className="btn-amazon">
-            amazon
-          </a>
+          <img
+            src="/images/book-cover.png"
+            alt="Copertina del manuale Patente B"
+            className="promo-card-image"
+          />
         </div>
 
         <div className="promo-card download">
-          <span className="promo-card-icon">
-            <Icon name="book" />
-          </span>
-          <h3>Scarica le domande</h3>
-          <p>Allenati con le domande ufficiali MIT, capitolo per capitolo</p>
-          <Link href="/scarica" className="btn-download">
-            <Icon name="check" size={16} color="#fff" />
-            Scarica PDF
-          </Link>
+          <div className="promo-card-text">
+            <span className="promo-card-icon">
+              <Icon name="book" />
+            </span>
+            <h3>Scarica le domande</h3>
+            <p>Allenati con le domande ufficiali MIT, capitolo per capitolo</p>
+            <Link href="/scarica" className="btn-download">
+              <Icon name="check" size={16} color="#fff" />
+              Scarica PDF
+            </Link>
+          </div>
+          <img
+            src="/images/pdf-mockup.png"
+            alt="Anteprima del PDF scaricabile con le domande"
+            className="promo-card-image"
+          />
         </div>
       </div>
 
