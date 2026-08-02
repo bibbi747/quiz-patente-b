@@ -3,18 +3,17 @@
 import { iconForCategory } from "@/lib/icons";
 import ChapterCard from "./ChapterCard";
 
-export default function PartsList({ parts, progress }) {
+export default function PartsList({ parts, progress, activeChapter }) {
   return (
     <>
       {parts.map((part, pi) => (
         <section key={part.title} className="part-block">
-          <p className="part-eyebrow">
-            Parte {pi + 1}
-          </p>
-
-          <h2 className="part-title">
-            {part.title}
-          </h2>
+          <div className="part-header">
+            <h2>
+              Parte {pi + 1} · {part.title}
+            </h2>
+            <p>{part.chapters.length} capitoli</p>
+          </div>
 
           <div className="chapters-grid">
             {part.chapters.map((c) => (
@@ -22,9 +21,11 @@ export default function PartsList({ parts, progress }) {
                 key={c.chapter}
                 chapter={c.chapter}
                 title={c.title}
+                description={c.description}
                 icon={iconForCategory(c.title)}
                 total={c.count}
                 progress={progress}
+                active={c.chapter === activeChapter}
               />
             ))}
           </div>

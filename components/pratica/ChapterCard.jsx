@@ -3,14 +3,18 @@
 import Link from "next/link";
 
 import Icon from "@/components/Icon";
+import ImageWithFallback from "@/components/common/ImageWithFallback";
 import ProgressBar from "./ProgressBar";
+import { partColorForChapter, partNumberForChapter } from "@/lib/parts";
 
 export default function ChapterCard({
   chapter,
   title,
+  description,
   icon,
   total,
   progress = {},
+  active = false,
 }) {
   const key = `chapter_${String(chapter).padStart(2, "0")}`;
 
@@ -19,50 +23,60 @@ export default function ChapterCard({
   const percent =
     total > 0 ? Math.round((completed / total) * 100) : 0;
 
-  let color = "#9ca3af";
+  // Colore dell'icona: fisso per argomento (Parte del libro), non per
+  // progresso — dà varietà visiva alla griglia anche a 0%.
+  const iconColor = partColorForChapter(chapter);
+  const partNumber = String(partNumberForChapter(chapter)).padStart(2, "0");
 
-  if (percent > 0) color = "#2563eb";
-  if (percent === 100) color = "#16a34a";
+  // Colore della barra di avanzamento: questo sì segue il progresso.
+  let progressColor = "#9ca3af";
+  if (percent > 0) progressColor = "#3B82F6";
+  if (percent === 100) progressColor = "#22C55E";
 
   return (
-    <Link href={`/pratica/${chapter}`} className="chapter-card">
-      <div className="chapter-card-top">
-        <div
-          className="chapter-icon"
-          style={{ backgroundColor: color }}
-        >
-          <Icon
-            name={icon}
-            size={18}
-            color="#fff"
+    <Link
+      href={`/pratica/${chapter}`}
+      className={`chapter-card${active ? " active" : ""}`}
+    >
+      <div className="chapter-main">
+        <div className="chapter-icon">
+          <ImageWithFallback
+            src={`/images/parti/parte-${partNumber}.png`}
+            alt=""
+            className="chapter-icon-img"
+            fallback={<Icon name={icon} size={26} color={iconColor} />}
           />
         </div>
 
-        <span className="chapter-percent">
-          {percent}%
-        </span>
+        <div className="chapter-content">
+          <div className="chapter-head">
+            <div>
+              <span className="chapter-number">Capitolo {chapter}</span>
+              <h3 className="chapter-title">{title}</h3>
+            </div>
+
+            <span className="chapter-percent">{percent}%</span>
+          </div>
+
+          {description && <p className="chapter-description">{description}</p>}
+        </div>
       </div>
 
-      <h3>
-        {chapter}. {title}
-      </h3>
+      <ProgressBar value={percent} color={progressColor} />
 
-      <ProgressBar
-        value={percent}
-        color={color}
-      />
+      <div className="chapter-footer">
+        {active ? (
+          <span className="chapter-badge">In corso</span>
+        ) : (
+          <span className="chapter-quiz">
+            {completed} / {total} quiz
+          </span>
+        )}
 
-      <p className="chapter-info">
-        {completed} di {total} quiz completati
-      </p>
-
-      <button className="chapter-button">
-  {percent === 0
-    ? "Inizia →"
-    : percent === 100
-    ? "Ripassa →"
-    : "Continua →"}
-</button>
+        <span className="chapter-right">
+          <Icon name="chevron" size={16} />
+        </span>
+      </div>
     </Link>
   );
 }

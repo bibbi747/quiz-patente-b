@@ -1,0 +1,77 @@
+/* ===========================================================
+   Header
+   =========================================================== */
+.site-header {
+  background: var(--pb-navy);
+  color: var(--pb-white);
+}
+
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+  color: var(--pb-white);
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--pb-amber);
+  color: var(--pb-amber-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.header-nav {
+  display: flex;
+  gap: 18px;
+  font-size: 14px;
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+}
+
+.header-nav a:hover {
+  border-bottom-color: var(--pb-amber);
+}
+
+.header-nav a.active {
+  color: var(--pb-white);
+  border-bottom-color: var(--pb-amber);
+}
+
+/* ===========================================================
+   Footer — vive qui perché nasce nello stesso file (layout.js)
+   dell'header ed è "cornice" di pagina, non contenuto di una
+   singola sezione.
+   =========================================================== */
+.site-footer {
+  text-align: center;
+  padding: 30px 20px 50px;
+  font-size: 12px;
+  color: var(--pb-ink-soft);
+  font-family: var(--font-mono);
+}

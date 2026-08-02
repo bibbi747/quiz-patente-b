@@ -1,7 +1,9 @@
 import "./globals.css";
+import "./design.css";
+import "@/components/header/header.css";
 import Link from "next/link";
 import { AuthProvider } from "@/components/AuthProvider";
-import HeaderUser from "@/components/HeaderUser";
+import HeaderUser from "@/components/header/HeaderUser";
 
 export const metadata = {
   title: "Quiz Patente B — Esercitati con il manuale",

@@ -1,8 +1,12 @@
+import "@/components/home/home.css";
+import "@/components/common/common.css";
+import "@/components/pratica/pratica.css";
 import Link from "next/link";
 import { getAllQuestions } from "@/lib/questions";
-import { buildPartsWithCounts } from "@/lib/parts";
+import { buildPartsWithCounts, partColorForChapter, partNumberForChapter } from "@/lib/parts";
 import { iconForCategory } from "@/lib/icons";
 import Icon from "@/components/Icon";
+import ImageWithFallback from "@/components/common/ImageWithFallback";
 
 // TODO — sostituire con il link vero della pagina recensioni Amazon
 // non appena il libro è pubblicato.
@@ -17,18 +21,23 @@ export default function HomePage() {
 
   return (
     <main className="container">
-      <div className="hero-card">
-        <div className="hero-card-text">
+      <div className="home-hero">
+        <div className="home-hero-text">
           <span className="hero-eyebrow">Compagno del manuale Patente B</span>
           <h1>
-            Esercitati. Impara. <span className="accent">Supera.</span>
+            Esercitati.
+            <br />
+            Impara.
+            <br />
+            <span className="accent">Supera.</span>
           </h1>
           <p>
-            {all.length} domande dal manuale, spiegate una per una, per
-            arrivare pronto all&apos;esame.
+            {all.length} domande dal manuale, spiegate
+            <br />
+            una per una per arrivare pronto all&apos;esame.
           </p>
-          <div className="hero-card-actions">
-            <Link href="/pratica" className="btn-navy">
+          <div className="home-hero-actions">
+            <Link href="/pratica" className="btn-amber">
               Inizia a esercitarti
             </Link>
             <Link href="/esame" className="btn-outline">
@@ -36,30 +45,36 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-        <div className="hero-card-illustration">
-          <img
-            src="/images/hero-illustration.png"
-            alt="Illustrazione di un'automobile su una strada cittadina"
-          />
-        </div>
       </div>
 
       <div className="stat-row">
         <div className="stat-card">
-          <p className="stat-value">{all.length}</p>
-          <p className="stat-label">Domande totali</p>
+          <span className="stat-card-icon"><Icon name="book" size={18} /></span>
+          <div>
+            <p className="stat-value">{all.length}</p>
+            <p className="stat-label">Domande totali</p>
+          </div>
         </div>
         <div className="stat-card">
-          <p className="stat-value">{totalChapters}</p>
-          <p className="stat-label">Capitoli</p>
+          <span className="stat-card-icon"><Icon name="car" size={18} /></span>
+          <div>
+            <p className="stat-value">{totalChapters}</p>
+            <p className="stat-label">Capitoli</p>
+          </div>
         </div>
         <div className="stat-card">
-          <p className="stat-value">20 min</p>
-          <p className="stat-label">Durata esame</p>
+          <span className="stat-card-icon"><Icon name="gauge" size={18} /></span>
+          <div>
+            <p className="stat-value">20 min</p>
+            <p className="stat-label">Durata esame</p>
+          </div>
         </div>
         <div className="stat-card">
-          <p className="stat-value">3</p>
-          <p className="stat-label">Errori max</p>
+          <span className="stat-card-icon"><Icon name="target" size={18} /></span>
+          <div>
+            <p className="stat-value">3</p>
+            <p className="stat-label">Errori max</p>
+          </div>
         </div>
       </div>
 
@@ -69,20 +84,31 @@ export default function HomePage() {
             <h2>Quiz per capitolo</h2>
             <Link href="/pratica">Vedi tutti i {totalChapters} →</Link>
           </div>
-          <div className="mini-chapter-grid">
-            {featured.map((c) => (
-              <Link
-                key={c.chapter}
-                href={`/pratica/${c.chapter}`}
-                className="mini-chapter"
-              >
-                <span className="mini-chapter-icon">
-                  <Icon name={iconForCategory(c.title)} />
-                </span>
-                <p className="mini-chapter-title">{c.chapter}. {c.title}</p>
-                <p className="mini-chapter-count">{c.count} domande</p>
-              </Link>
-            ))}
+          <div className="home-featured-grid">
+            {featured.map((c) => {
+              const partNumber = String(partNumberForChapter(c.chapter)).padStart(2, "0");
+              return (
+                <Link
+                  key={c.chapter}
+                  href={`/pratica/${c.chapter}`}
+                  className="home-chapter-tile"
+                >
+                  <div className="home-chapter-tile-icon">
+                    <ImageWithFallback
+                      src={`/images/parti/parte-${partNumber}.png`}
+                      alt=""
+                      className="home-chapter-tile-icon-img"
+                      fallback={<Icon name={iconForCategory(c.title)} size={18} color={partColorForChapter(c.chapter)} />}
+                    />
+                  </div>
+                  <div className="home-chapter-tile-text">
+                    <p className="home-chapter-tile-title">{c.chapter}. {c.title}</p>
+                    <p className="home-chapter-tile-count">{c.count} domande</p>
+                    <div className="progress"><div className="progress-fill" style={{ width: "0%", background: "var(--pb-blue)" }} /></div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
 

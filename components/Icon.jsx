@@ -42,6 +42,30 @@ const paths = {
       <path d="M20 5 Q16 3 12 5 V19 Q16 17 20 19 Z" />
     </>
   ),
+  target: (
+    <>
+      <circle cx="12" cy="12" r="8" />
+      <circle cx="12" cy="12" r="4.2" />
+      <circle cx="12" cy="12" r="0.6" fill="currentColor" />
+    </>
+  ),
+  trophy: (
+    <>
+      <path d="M7 4 H17 V9 Q17 14 12 14 Q7 14 7 9 Z" />
+      <path d="M7 5 H4 Q4 9 7.5 9.5" />
+      <path d="M17 5 H20 Q20 9 16.5 9.5" />
+      <path d="M12 14 V18" />
+      <path d="M8.5 20 H15.5" />
+      <path d="M9.5 18 H14.5 L14.8 20 H9.2 Z" />
+    </>
+  ),
+  chevron: <path d="M9 5 L16 12 L9 19" />,
+  search: (
+    <>
+      <circle cx="11" cy="11" r="7" />
+      <path d="M20 20 L16.5 16.5" />
+    </>
+  ),
 };
 
 export default function Icon({ name, size = 18, color = "currentColor" }) {

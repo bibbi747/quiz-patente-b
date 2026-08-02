@@ -1,3 +1,5 @@
+import "@/components/common/common.css";
+import "@/components/pratica/pratica.css";
 import Link from "next/link";
 import { getAllQuestions } from "@/lib/questions";
 import { buildPartsWithCounts, pdfFilename } from "@/lib/parts";

@@ -1,5 +1,7 @@
 "use client";
 
+import "./common/common.css";
+
 /**
  * Cruscotto circolare usato ovunque nel sito: come indicatore di
  * avanzamento durante la pratica, come timer nella simulazione

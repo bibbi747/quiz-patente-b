@@ -1,5 +1,6 @@
 "use client";
 
+import "@/components/common/common.css";
 import { useState } from "react";
 import Link from "next/link";
 import { buildExam } from "@/lib/questions";

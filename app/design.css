@@ -1,0 +1,35 @@
+:root {
+
+  /* ===== COLORI ===== */
+
+  --primary: #2563EB;
+  --primary-dark: #173B5B;
+  --primary-light: #EAF4FF;
+
+  --secondary: #F7C948;
+
+  --success: #22C55E;
+  --danger: #EF4444;
+
+  --background: #F5F8FC;
+  --surface: #FFFFFF;
+
+  --text: #263445;
+  --text-light: #667085;
+
+  /* ===== RADIUS ===== */
+
+  --radius-xl: 36px;
+  --radius-lg: 24px;
+  --radius-md: 18px;
+
+  /* ===== SHADOW ===== */
+
+  --shadow:
+    0 12px 40px rgba(15,23,42,.08);
+
+  /* ===== LAYOUT ===== */
+
+  --container: 1320px;
+
+}

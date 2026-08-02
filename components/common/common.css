@@ -1,0 +1,79 @@
+/* ===========================================================
+   Gauge — lo strumento di bordo, elemento firma del prodotto
+   Usato in: risultati quiz, header quiz, pagina esame
+   =========================================================== */
+.gauge {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+}
+
+.gauge svg { transform: rotate(-90deg); }
+
+.gauge-track { fill: none; stroke: var(--pb-line); stroke-width: 6; }
+.gauge-value {
+  fill: none;
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.4s ease;
+}
+
+.gauge-readout {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pb-ink);
+}
+
+.gauge.big { width: 132px; height: 132px; margin: 0 auto; }
+.gauge.big .gauge-readout { font-size: 24px; }
+
+/* ===========================================================
+   Hero (versione semplice) — intestazione di pagina riusata
+   su /esame e /scarica, non solo sulla home (che ha la sua
+   versione più ricca, hero-card, in home.css)
+   =========================================================== */
+.hero {
+  padding: 40px 0 8px;
+  text-align: center;
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--pb-blue);
+  background: var(--pb-blue-tint);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: 40px;
+  line-height: 1.15;
+  margin: 0 0 14px;
+  color: var(--pb-ink);
+}
+
+.hero p {
+  font-size: 16px;
+  color: var(--pb-ink-soft);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ===========================================================
+   Componenti futuri: Modal, Spinner, Badge, Tooltip
+   Aggiungi qui quando verranno introdotti nel prodotto.
+   =========================================================== */
