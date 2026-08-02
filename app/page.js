@@ -38,7 +38,7 @@ export default function HomePage() {
           </p>
           <div className="home-hero-actions">
             <Link href="/pratica" className="btn-amber">
-              Inizia a esercitarti
+              Inizia ad esercitarti
             </Link>
             <Link href="/esame" className="btn-outline">
               Simulazione esame

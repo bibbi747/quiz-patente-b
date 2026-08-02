@@ -55,7 +55,7 @@
 .chapters-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
+  gap: 14px;
 }
 
 .chapters-grid-flat {
@@ -128,12 +128,12 @@
 .chapter-card {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 20px;
-  min-height: 270px;
+  gap: 8px;
+  padding: 14px;
+  min-height: 0;
   background: #fff;
   border: 1px solid #e5edf6;
-  border-radius: 22px;
+  border-radius: 16px;
   text-decoration: none;
   color: inherit;
   box-shadow: 0 8px 24px rgba(20, 54, 93, 0.06);
@@ -141,8 +141,8 @@
 }
 
 .chapter-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 35px rgba(20, 54, 93, 0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(20, 54, 93, 0.1);
 }
 
 .chapter-card.active {
@@ -151,12 +151,12 @@
 
 .chapter-main {
   display: flex;
-  gap: 18px;
+  gap: 10px;
 }
 
 .chapter-icon {
-  width: 64px;
-  height: 64px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,8 +164,8 @@
 }
 
 .chapter-icon-img {
-  width: 64px;
-  height: 64px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
 }
 
@@ -187,8 +187,8 @@
 
 .chapter-number {
   display: block;
-  margin-bottom: 5px;
-  font-size: 12px;
+  margin-bottom: 2px;
+  font-size: 10px;
   font-weight: 700;
   color: #2f80ed;
   text-transform: uppercase;
@@ -196,26 +196,27 @@
 
 .chapter-title {
   margin: 0;
-  font-size: 18px;
-  line-height: 1.3;
+  font-size: 13.5px;
+  line-height: 1.25;
   color: #14365d;
 }
 
 .chapter-percent {
   flex-shrink: 0;
-  margin-left: 12px;
-  font-size: 18px;
+  margin-left: 8px;
+  font-size: 13px;
   line-height: 1;
   font-weight: 800;
   color: #14365d;
 }
 
 .chapter-description {
-  margin: 8px 0 14px;
+  margin: 4px 0 0;
   color: #667085;
-  font-size: 14px;
+  font-size: 12px;
+  line-height: 1.4;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -225,20 +226,21 @@
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
+  padding-top: 6px;
 }
 
 .chapter-badge {
-  padding: 6px 12px;
+  padding: 4px 10px;
   border-radius: 999px;
   background: #fff1cc;
   color: #a56600;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
 }
 
 .chapter-quiz {
   color: #667085;
-  font-size: 13px;
+  font-size: 11.5px;
   font-weight: 600;
 }
 
@@ -249,9 +251,9 @@
 }
 
 .chapter-right svg {
-  width: 38px;
-  height: 38px;
-  padding: 10px;
+  width: 26px;
+  height: 26px;
+  padding: 7px;
   border-radius: 50%;
   background: #2f80ed;
   color: #fff;
@@ -263,7 +265,7 @@
    =========================================================== */
 .progress {
   width: 100%;
-  height: 8px;
+  height: 5px;
   background: #e5e7eb;
   border-radius: 999px;
   overflow: hidden;

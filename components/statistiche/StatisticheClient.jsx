@@ -8,17 +8,32 @@ import { auth } from "@/lib/firebase";
 import { getUserData } from "@/lib/getUserData";
 import { computeStreak } from "@/lib/streak";
 import { partColorForChapter, partNumberForChapter } from "@/lib/parts";
+import { resetChapterProgress } from "@/lib/progressEngine";
 import Gauge from "@/components/Gauge";
 import Icon from "@/components/Icon";
 import ImageWithFallback from "@/components/common/ImageWithFallback";
 
 export default function StatisticheClient({ parts }) {
   const [status, setStatus] = useState("loading"); // loading | out | in
+  const [uid, setUid] = useState(null);
   const [userData, setUserData] = useState({
     progress: {},
     statistics: {},
     mistakes: {},
   });
+
+  async function loadUserData(userId) {
+    try {
+      const data = await getUserData(userId);
+      setUserData({
+        progress: data.progress || {},
+        statistics: data.statistics || {},
+        mistakes: data.mistakes || {},
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -27,22 +42,28 @@ export default function StatisticheClient({ parts }) {
         return;
       }
 
-      try {
-        const data = await getUserData(user.uid);
-        setUserData({
-          progress: data.progress || {},
-          statistics: data.statistics || {},
-          mistakes: data.mistakes || {},
-        });
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setStatus("in");
-      }
+      setUid(user.uid);
+      await loadUserData(user.uid);
+      setStatus("in");
     });
 
     return () => unsubscribe();
   }, []);
+
+  async function handleResetChapter(chapter, currentCounts) {
+    const confirmed = window.confirm(
+      `Azzerare i progressi del capitolo "${chapter.chapter}. ${chapter.title}"? Le ${currentCounts.answered} risposte già date (${currentCounts.wrong} sbagliate) verranno cancellate, l'operazione non si può annullare.`
+    );
+
+    if (!confirmed) return;
+
+    try {
+      await resetChapterProgress(uid, chapter.chapter, currentCounts);
+      await loadUserData(uid);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   if (status === "loading") {
     return <p className="stat-page-loading">Caricamento...</p>;
@@ -93,8 +114,13 @@ export default function StatisticheClient({ parts }) {
   const weakChapters = allChapters
     .map((c) => {
       const key = `chapter_${String(c.chapter).padStart(2, "0")}`;
-      const wrong = userData.progress?.[key]?.wrong || 0;
-      return { ...c, wrong };
+      const entry = userData.progress?.[key] || {};
+      return {
+        ...c,
+        wrong: entry.wrong || 0,
+        answered: entry.questions?.length || 0,
+        correct: entry.correct || 0,
+      };
     })
     .filter((c) => c.wrong > 0)
     .sort((a, b) => b.wrong - a.wrong)
@@ -147,24 +173,30 @@ export default function StatisticheClient({ parts }) {
             {weakChapters.map((c) => {
               const partNumber = String(partNumberForChapter(c.chapter)).padStart(2, "0");
               return (
-                <Link
-                  key={c.chapter}
-                  href={`/pratica/${c.chapter}`}
-                  className="stat-weak-item"
-                >
-                  <div className="stat-weak-icon">
-                    <ImageWithFallback
-                      src={`/images/parti/parte-${partNumber}.png`}
-                      alt=""
-                      className="stat-weak-icon-img"
-                      fallback={<Icon name="alert" size={18} color={partColorForChapter(c.chapter)} />}
-                    />
-                  </div>
-                  <div className="stat-weak-text">
-                    <p className="stat-weak-title">{c.chapter}. {c.title}</p>
-                    <p className="stat-weak-count">{c.wrong} risposte sbagliate</p>
-                  </div>
-                </Link>
+                <div key={c.chapter} className="stat-weak-item">
+                  <Link href={`/pratica/${c.chapter}`} className="stat-weak-item-link">
+                    <div className="stat-weak-icon">
+                      <ImageWithFallback
+                        src={`/images/parti/parte-${partNumber}.png`}
+                        alt=""
+                        className="stat-weak-icon-img"
+                        fallback={<Icon name="alert" size={18} color={partColorForChapter(c.chapter)} />}
+                      />
+                    </div>
+                    <div className="stat-weak-text">
+                      <p className="stat-weak-title">{c.chapter}. {c.title}</p>
+                      <p className="stat-weak-count">{c.wrong} risposte sbagliate</p>
+                    </div>
+                  </Link>
+
+                  <button
+                    type="button"
+                    className="stat-weak-reset"
+                    onClick={() => handleResetChapter(c, c)}
+                  >
+                    Azzera
+                  </button>
+                </div>
               );
             })}
           </div>
