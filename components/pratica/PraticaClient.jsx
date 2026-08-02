@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
+import Link from "next/link";
 
 import { auth } from "@/lib/firebase";
 import { getUserData } from "@/lib/getUserData";
@@ -29,12 +30,15 @@ export default function PraticaClient({ parts }) {
     mistakes: {},
   });
   const [loading, setLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [sortBy, setSortBy] = useState("capitolo");
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      setIsLoggedIn(!!user);
+
       if (!user) {
         setUserData({
           progress: {},
@@ -168,6 +172,13 @@ export default function PraticaClient({ parts }) {
   return (
     <div className="practice-main">
       <CapitoliHeader progressPercent={overallPercent} />
+
+      {!loading && !isLoggedIn && (
+        <Link href="/login" className="login-hint">
+          <span>Accedi per salvare i tuoi progressi tra un capitolo e l&apos;altro</span>
+          <span className="login-hint-arrow">→</span>
+        </Link>
+      )}
 
       <FilterBar
         selected={statusFilter}

@@ -51,9 +51,15 @@
 .home-hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
 @media (max-width: 900px) {
-  .home-hero { min-height: 480px; }
-  .home-hero-text { max-width: none; padding: 36px; text-align: center; }
-  .home-hero-text h1 { font-size: 30px; }
+  .home-hero { min-height: 480px; align-items: flex-start; }
+  .home-hero-text {
+    max-width: none;
+    padding: 28px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.88);
+    border-radius: 0 0 24px 24px;
+  }
+  .home-hero-text h1 { font-size: 26px; }
   .home-hero-text p { margin-left: auto; margin-right: auto; }
   .home-hero-actions { justify-content: center; }
 }

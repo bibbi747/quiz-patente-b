@@ -1,0 +1,185 @@
+/* ===========================================================
+   Pagina "Le mie statistiche"
+   =========================================================== */
+.stat-page-header {
+  margin: 32px 0 24px;
+}
+
+.stat-page-header h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  color: var(--pb-navy);
+  margin: 0 0 6px;
+}
+
+.stat-page-header p {
+  margin: 0;
+  color: var(--pb-ink-soft);
+  font-size: 15px;
+}
+
+.stat-page-loading {
+  color: var(--pb-ink-soft);
+  padding: 40px 0;
+}
+
+/* ===========================================================
+   Accesso richiesto
+   =========================================================== */
+.stat-login-card {
+  background: #fff;
+  border: 1px solid var(--pb-line);
+  border-radius: var(--radius-l);
+  padding: 40px;
+  text-align: center;
+  margin: 20px 0 60px;
+}
+
+.stat-login-card h2 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--pb-navy);
+  margin: 0 0 8px;
+}
+
+.stat-login-card p {
+  color: var(--pb-ink-soft);
+  margin: 0 0 20px;
+  font-size: 14px;
+}
+
+/* ===========================================================
+   Riga di statistiche riassuntive
+   =========================================================== */
+.stat-summary-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 700px) {
+  .stat-summary-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+.stat-summary-card {
+  background: #fff;
+  border: 1px solid var(--pb-line);
+  border-radius: var(--radius-m);
+  padding: 16px;
+}
+
+.stat-summary-label {
+  display: block;
+  font-size: 12.5px;
+  color: var(--pb-ink-soft);
+  margin-bottom: 6px;
+}
+
+.stat-summary-value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--pb-navy);
+}
+
+/* ===========================================================
+   Card avanzamento generale
+   =========================================================== */
+.stat-progress-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #fff;
+  border: 1px solid var(--pb-line);
+  border-radius: var(--radius-l);
+  padding: 26px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 600px) {
+  .stat-progress-card { flex-direction: column; text-align: center; }
+}
+
+.stat-progress-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--pb-navy);
+  margin: 0 0 6px;
+}
+
+.stat-progress-sub {
+  margin: 0;
+  color: var(--pb-ink-soft);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ===========================================================
+   Capitoli da ripassare
+   =========================================================== */
+.stat-weak-section { margin-bottom: 60px; }
+
+.stat-weak-section h2 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--pb-navy);
+  margin: 0 0 14px;
+}
+
+.stat-weak-empty {
+  color: var(--pb-ink-soft);
+  font-size: 14px;
+  background: #fff;
+  border: 1px dashed var(--pb-line);
+  border-radius: var(--radius-m);
+  padding: 24px;
+  text-align: center;
+}
+
+.stat-weak-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stat-weak-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  border: 1px solid var(--pb-line);
+  border-radius: var(--radius-m);
+  padding: 12px 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.stat-weak-item:hover { border-color: var(--pb-red); }
+
+.stat-weak-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-weak-icon-img { width: 40px; height: 40px; object-fit: contain; }
+
+.stat-weak-text { flex: 1; min-width: 0; }
+
+.stat-weak-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pb-ink);
+}
+
+.stat-weak-count {
+  margin: 2px 0 0;
+  font-size: 12.5px;
+  color: var(--pb-red);
+}
