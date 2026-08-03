@@ -12,6 +12,7 @@ import { resetChapterProgress } from "@/lib/progressEngine";
 import Gauge from "@/components/Gauge";
 import Icon from "@/components/Icon";
 import ImageWithFallback from "@/components/common/ImageWithFallback";
+import ShareSection from "@/components/share/ShareSection";
 
 export default function StatisticheClient({ parts }) {
   const [status, setStatus] = useState("loading"); // loading | out | in
@@ -52,7 +53,7 @@ export default function StatisticheClient({ parts }) {
 
   async function handleResetChapter(chapter, currentCounts) {
     const confirmed = window.confirm(
-      `Azzerare i progressi del capitolo "${chapter.chapter}. ${chapter.title}"? Le ${currentCounts.answered} risposte già date (${currentCounts.wrong} sbagliate) verranno cancellate, l'operazione non si può annullare.`
+      `Azzerare i progressi del capitolo "${chapter.chapter}. ${chapter.title}"? Le ${currentCounts.answered} risposte già date (${currentCounts.wrong} sbagliate) verranno cancellate e non si può annullare.`
     );
 
     if (!confirmed) return;
@@ -160,6 +161,17 @@ export default function StatisticheClient({ parts }) {
           </p>
         </div>
       </div>
+
+      <ShareSection
+        stats={{
+          percentage: overallPercent,
+          quizCompleted: totalAnswered,
+          chaptersCompleted,
+          totalChapters: allChapters.length,
+          streak,
+          accuracy,
+        }}
+      />
 
       <section className="stat-weak-section">
         <h2>Capitoli da ripassare</h2>
