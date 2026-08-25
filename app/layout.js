@@ -43,9 +43,27 @@ export default function RootLayout({ children }) {
 
           {children}
 
-          <footer className="site-footer">
-            Strumento gratuito abbinato al manuale Patente B — non sostituisce
-            la banca dati ufficiale del Ministero.
+          <footer
+            className="site-footer"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
+            <span>
+              Strumento gratuito abbinato al manuale Patente B — domande
+              originali elaborate sugli argomenti ufficiali del programma
+              ministeriale (MIT), non estratte dalla banca dati ufficiale
+              del Ministero.
+            </span>
+
+            <nav style={{ display: "flex", gap: "16px" }}>
+              <Link href="/privacy" style={{ color: "inherit" }}>
+                Privacy Policy
+              </Link>
+            </nav>
           </footer>
         </AuthProvider>
       </body>
