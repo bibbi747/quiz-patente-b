@@ -211,9 +211,9 @@ export default function HomePage() {
               </svg>
             </span>
 
-            <h3 className="promo-card-title">Scarica le domande<br />ufficiali MIT</h3>
+            <h3 className="promo-card-title">Scarica le domande<br />sugli argomenti MIT</h3>
             <p className="promo-card-desc">
-              Allenati con le domande ufficiali MIT, capitolo per capitolo.
+              Allenati con le domande sugli argomenti ufficiali MIT, capitolo per capitolo.
             </p>
 
             <ul className="promo-checklist">
