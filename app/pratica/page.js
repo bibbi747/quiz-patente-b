@@ -46,8 +46,7 @@ export default function PraticaIndexPage() {
           <h1>Scegli un capitolo e mettiti alla prova</h1>
 
           <p>
-            Esercita la tua preparazione con i quiz ufficiali MIT divisi per
-            argomento.
+            Esercita la tua preparazione con domande sugli argomenti ufficiali MIT.
           </p>
 
           <div className="pratica-hero-stats">
