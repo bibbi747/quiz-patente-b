@@ -2,7 +2,7 @@
    Header
    =========================================================== */
 .site-header {
-  background: var(--pb-navy);
+  background: #2D5E3D;
   color: var(--pb-white);
 }
 

@@ -12,6 +12,11 @@ import ImageWithFallback from "@/components/common/ImageWithFallback";
 // non appena il libro è pubblicato.
 const AMAZON_REVIEW_URL = "#";
 
+// I 25 argomenti sono quelli ufficiali del programma MIT: il numero non
+// coincide con il totale dei capitoli del manuale, resta un valore
+// editoriale fisso, non calcolato (coerente con la pagina Pratica).
+const ARGOMENTI_MINISTERIALI = 25;
+
 export default function HomePage() {
   const all = getAllQuestions();
   const parts = buildPartsWithCounts(all);
@@ -20,7 +25,7 @@ export default function HomePage() {
   const featured = chapters.filter((c) => c.count > 0).slice(0, 4);
 
   return (
-    <main className="container">
+    <main className="container" style={{ maxWidth: "1280px" }}>
       <div className="home-hero">
         <div className="home-hero-text">
           <span className="hero-eyebrow">Compagno del manuale Patente B</span>
@@ -43,39 +48,53 @@ export default function HomePage() {
             <Link href="/esame" className="btn-outline">
               Simulazione esame
             </Link>
+            <Link href="/precedenze" className="btn-outline">
+              Le precedenze
+            </Link>
           </div>
         </div>
       </div>
 
       <div className="stat-row">
         <div className="stat-card">
-          <span className="stat-card-icon"><Icon name="book" size={18} /></span>
+          <span className="stat-card-icon">
+            <img src="/images/stats/icon-domande.png" alt="" />
+          </span>
           <div>
             <p className="stat-value">{all.length}</p>
-            <p className="stat-label">Domande totali</p>
+            <p className="stat-label">Domande dal manuale</p>
           </div>
         </div>
+
         <div className="stat-card">
-          <span className="stat-card-icon"><Icon name="car" size={18} /></span>
+          <span className="stat-card-icon">
+            <img src="/images/stats/icon-argomenti.png" alt="" />
+          </span>
           <div>
-            <p className="stat-value">{totalChapters}</p>
-            <p className="stat-label">Capitoli</p>
+            <p className="stat-value">{ARGOMENTI_MINISTERIALI}</p>
+            <p className="stat-label">Argomenti ministeriali</p>
           </div>
         </div>
-        <div className="stat-card">
-          <span className="stat-card-icon"><Icon name="gauge" size={18} /></span>
+
+        <Link href="/esame" className="stat-card stat-card-link">
+          <span className="stat-card-icon">
+            <img src="/images/stats/icon-simulazione.png" alt="" />
+          </span>
           <div>
-            <p className="stat-value">20 min</p>
-            <p className="stat-label">Durata esame</p>
+            <p className="stat-value">Simulazione</p>
+            <p className="stat-label">Tempo reale d&apos;esame</p>
           </div>
-        </div>
-        <div className="stat-card">
-          <span className="stat-card-icon"><Icon name="target" size={18} /></span>
+        </Link>
+
+        <Link href="/statistiche" className="stat-card stat-card-link">
+          <span className="stat-card-icon">
+            <img src="/images/stats/icon-statistiche.png" alt="" />
+          </span>
           <div>
-            <p className="stat-value">3</p>
-            <p className="stat-label">Errori max</p>
+            <p className="stat-value">Statistiche</p>
+            <p className="stat-label">Monitora i tuoi progressi</p>
           </div>
-        </div>
+        </Link>
       </div>
 
       <div className="split-row">
@@ -142,44 +161,92 @@ export default function HomePage() {
       </div>
 
       <div className="promo-row">
-        <div className="promo-card review">
-          <div className="promo-card-text">
-            <span className="promo-card-icon">
-              <Icon name="check" />
+        <div className="promo-card">
+          <div className="promo-card-stripe" />
+          <div className="promo-card-dots" />
+
+          <div className="promo-card-inner">
+            <span className="promo-icon-circle">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#195425" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 3 L14.6 8.6 L20.8 9.4 L16.3 13.6 L17.5 19.7 L12 16.6 L6.5 19.7 L7.7 13.6 L3.2 9.4 L9.4 8.6 Z" />
+              </svg>
             </span>
-            <h3>Se ti è piaciuto questo libro</h3>
-            <p>Lascia una recensione su Amazon</p>
+
+            <h3 className="promo-card-title">Ti è piaciuto<br />questo libro?</h3>
+            <p className="promo-card-desc">
+              Lascia una recensione su Amazon e aiuta altri studenti come te!
+            </p>
+
             <div className="promo-stars" aria-hidden="true">
               ★★★★★
             </div>
-            <a href={AMAZON_REVIEW_URL} className="btn-amazon">
-              amazon
+
+            <a href={AMAZON_REVIEW_URL} className="promo-btn">
+              <span style={{ display: "inline-flex", width: 22, height: 22, borderRadius: "50%", background: "#fff", color: "#195425", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 800, fontStyle: "italic" }}>a</span>
+              Recensisci su Amazon
+              <span className="promo-btn-chevron">
+                <Icon name="chevron" size={16} />
+              </span>
             </a>
           </div>
-          <img
-            src="/images/book-cover.png"
-            alt="Copertina del manuale Patente B"
-            className="promo-card-image"
-          />
+
+          <div className="promo-card-image-wrap">
+            <img
+              src="/images/book-cover.png"
+              alt="Copertina del manuale Patente B"
+              className="promo-book-cover"
+            />
+          </div>
         </div>
 
-        <div className="promo-card download">
-          <div className="promo-card-text">
-            <span className="promo-card-icon">
-              <Icon name="book" />
+        <div className="promo-card">
+          <div className="promo-card-stripe" />
+          <div className="promo-card-blob" style={{ width: 220, height: 220, top: -60, right: -60 }} />
+
+          <div className="promo-card-inner">
+            <span className="promo-icon-circle">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#195425" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M7 3 H14 L18 7 V21 H7 Z" />
+                <path d="M14 3 V7 H18" />
+              </svg>
             </span>
-            <h3>Scarica le domande</h3>
-            <p>Allenati con le domande ufficiali MIT, capitolo per capitolo</p>
-            <Link href="/scarica" className="btn-download">
-              <Icon name="check" size={16} color="#fff" />
+
+            <h3 className="promo-card-title">Scarica le domande<br />ufficiali MIT</h3>
+            <p className="promo-card-desc">
+              Allenati con le domande ufficiali MIT, capitolo per capitolo.
+            </p>
+
+            <ul className="promo-checklist">
+              <li>
+                <span className="promo-check-dot"><Icon name="check" size={12} /></span>
+                Domande sempre aggiornate
+              </li>
+              <li>
+                <span className="promo-check-dot"><Icon name="check" size={12} /></span>
+                Per ogni capitolo del manuale
+              </li>
+              <li>
+                <span className="promo-check-dot"><Icon name="check" size={12} /></span>
+                Ideale per simulare l&apos;esame
+              </li>
+            </ul>
+
+            <Link href="/scarica" className="promo-btn">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 3 V15 M7 10 L12 15 L17 10" />
+                <path d="M4 19 H20" />
+              </svg>
               Scarica PDF
             </Link>
           </div>
-          <img
-            src="/images/pdf-mockup.png"
-            alt="Anteprima del PDF scaricabile con le domande"
-            className="promo-card-image"
-          />
+
+          <div className="promo-card-image-wrap">
+            <img
+              src="/images/pdf-mockup.png"
+              alt="Anteprima del PDF scaricabile con le domande"
+              className="promo-pdf-mockup"
+            />
+          </div>
         </div>
       </div>
 

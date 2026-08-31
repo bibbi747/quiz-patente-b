@@ -1,31 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import QRCode from "qrcode";
+import { useRef, useState } from "react";
 
 import ShareCard from "./ShareCard";
 import { generateShareImage } from "@/lib/generateShareImage";
 
-// Finché il libro non è pubblicato su Amazon, il QR porta al sito del
-// quiz. Quando avrai il link vero della scheda Amazon, basta cambiare
-// questa riga: tutte le card generate da quel momento useranno il nuovo
-// link, senza dover rigenerare nulla di vecchio.
-const SHARE_TARGET_URL = "https://quiz-patente-b.vercel.app";
-
 export default function ShareSection({ stats }) {
   const cardRef = useRef(null);
-  const [qrDataUrl, setQrDataUrl] = useState(null);
   const [status, setStatus] = useState("idle"); // idle | working | done | error
-
-  useEffect(() => {
-    QRCode.toDataURL(SHARE_TARGET_URL, {
-      width: 200,
-      margin: 1,
-      color: { dark: "#173a56", light: "#ffffff" },
-    })
-      .then(setQrDataUrl)
-      .catch((err) => console.error(err));
-  }, []);
 
   async function handleShare() {
     if (!cardRef.current) return;
@@ -73,17 +55,34 @@ export default function ShareSection({ stats }) {
   return (
     <section className="share-section">
       <div className="share-band">
-        <div className="share-band-text">
-          <strong>Condividi il tuo traguardo</strong>
-          <span>Genera un&apos;immagine con i tuoi progressi da condividere dove vuoi.</span>
+        <div className="share-band-decor" />
+
+        <div className="share-band-left">
+          <span className="share-band-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E3D24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="18" cy="5" r="3" />
+              <circle cx="6" cy="12" r="3" />
+              <circle cx="18" cy="19" r="3" />
+              <path d="M8.6 10.6 L15.4 6.4 M8.6 13.4 L15.4 17.6" />
+            </svg>
+          </span>
+
+          <div className="share-band-text">
+            <strong>Condividi il tuo traguardo</strong>
+            <span>Genera un&apos;immagine con i tuoi progressi da condividere dove vuoi.</span>
+          </div>
         </div>
 
         <button
           type="button"
-          className="btn-navy share-button"
+          className="share-button"
           onClick={handleShare}
           disabled={status === "working"}
         >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E3A0A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 16 V4 M7 9 L12 4 L17 9" />
+            <path d="M4 16 V19 A2 2 0 0 0 6 21 H18 A2 2 0 0 0 20 19 V16" />
+          </svg>
           {status === "working" ? "Genero l'immagine..." : "Condividi"}
         </button>
       </div>
@@ -96,8 +95,19 @@ export default function ShareSection({ stats }) {
 
       {/* Fuori dallo schermo: serve solo come sorgente per generare il
           PNG, l'utente non la vede mai. */}
-      <div className="share-offscreen" aria-hidden="true">
-        <ShareCard ref={cardRef} data={{ ...stats, qrDataUrl }} />
+      <div
+        className="share-offscreen"
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: "-99999px",
+          width: 0,
+          height: 0,
+          overflow: "hidden",
+        }}
+      >
+        <ShareCard ref={cardRef} data={stats} />
       </div>
     </section>
   );

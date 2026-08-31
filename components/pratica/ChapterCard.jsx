@@ -28,10 +28,10 @@ export default function ChapterCard({
   const iconColor = partColorForChapter(chapter);
   const partNumber = String(partNumberForChapter(chapter)).padStart(2, "0");
 
-  // Colore della barra di avanzamento: questo sì segue il progresso.
+  // Colore della barra di avanzamento: stesso verde per qualsiasi
+  // progresso maggiore di zero, grigio solo se non ancora iniziato.
   let progressColor = "#9ca3af";
-  if (percent > 0) progressColor = "#3B82F6";
-  if (percent === 100) progressColor = "#22C55E";
+  if (percent > 0) progressColor = "#27A630";
 
   return (
     <Link

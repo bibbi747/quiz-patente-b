@@ -21,8 +21,23 @@ export default function PraticaIndexPage() {
   const parts = buildPartsWithCounts(all);
 
   return (
-    <main className="container">
-      <section className="pratica-hero">
+    <main className="container" style={{ maxWidth: "1280px" }}>
+      <section
+        className="pratica-hero"
+        style={{
+          width: "100%",
+          height: "520px",
+          margin: "40px 0 60px",
+          borderRadius: "30px",
+          overflow: "hidden",
+          position: "relative",
+          display: "flex",
+          alignItems: "center",
+          backgroundImage: 'url("/images/pratica/hero-pratica.png")',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="pratica-hero-text">
           <span className="pratica-hero-badge">
             <Icon name="book" size={15} /> La pratica rende perfetti!

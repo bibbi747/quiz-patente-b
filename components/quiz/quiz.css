@@ -24,8 +24,8 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #eaf4ff;
-  color: #2563eb;
+  background: #E3F3E4;
+  color: #1E8526;
   font-family: var(--font-mono);
   font-size: 12px;
   padding: 5px 11px;
@@ -35,13 +35,10 @@
 
 .quiz-sign-image {
   display: block;
-  max-width: 160px;
-  max-height: 160px;
-  margin: 0 0 18px;
+  max-width: 200px;
+  max-height: 200px;
+  margin: 0 auto 18px;
   border-radius: var(--radius-m);
-  background: var(--pb-fog);
-  border: 1px solid var(--pb-line);
-  padding: 10px;
 }
 
 /* ===========================================================
@@ -60,7 +57,7 @@
 
 .quiz-back {
   text-decoration: none;
-  color: #2563eb;
+  color: #1E8526;
   font-weight: 600;
   font-size: 15px;
 }
@@ -88,7 +85,7 @@
 
 .quiz-progress-fill {
   height: 100%;
-  background: #2563eb;
+  background: #27A630;
   transition: 0.35s;
 }
 
@@ -105,8 +102,8 @@
   display: inline-block;
   padding: 6px 14px;
   border-radius: 999px;
-  background: #eef4ff;
-  color: #2563eb;
+  background: #E3F3E4;
+  color: #1E8526;
   font-size: 14px;
   font-weight: 700;
   margin-bottom: 20px;
@@ -118,7 +115,7 @@
   font-size: 32px;
   line-height: 1.35;
   font-weight: 700;
-  color: #173a56;
+  color: #0E3D24;
 }
 
 @media (max-width: 700px) {
@@ -154,7 +151,7 @@
   gap: 8px;
   cursor: pointer;
   transition: 0.2s;
-  color: #173a56;
+  color: #0E3D24;
 }
 
 .answer-card:hover:not(:disabled) {
@@ -180,22 +177,22 @@
 
 /* Stato: risposta corretta, scelta dall'utente */
 .answer-card.correct {
-  background: #16a34a;
-  border-color: #16a34a;
+  background: #27A630;
+  border-color: #27A630;
   color: #fff;
 }
 
 /* Stato: risposta sbagliata, scelta dall'utente */
 .answer-card.wrong {
-  background: #dc2626;
-  border-color: #dc2626;
+  background: #c9504f;
+  border-color: #c9504f;
   color: #fff;
 }
 
 /* Stato: risposta corretta, NON scelta (mostrata come riferimento) */
 .answer-card.reveal {
-  border-color: #16a34a;
-  color: #16a34a;
+  border-color: #27A630;
+  color: #27A630;
 }
 
 /* ===========================================================
@@ -209,8 +206,8 @@
   line-height: 1.6;
 }
 
-.quiz-feedback.ok { background: #effaf3; border-left: 6px solid #16a34a; }
-.quiz-feedback.no { background: #fef2f2; border-left: 6px solid #dc2626; }
+.quiz-feedback.ok { background: #effaf3; border-left: 6px solid #27A630; }
+.quiz-feedback.no { background: #fbeeed; border-left: 6px solid #c9504f; }
 
 .quiz-feedback strong {
   display: block;
@@ -218,8 +215,8 @@
   font-size: 17px;
 }
 
-.quiz-feedback.ok strong { color: #166534; }
-.quiz-feedback.no strong { color: #991b1b; }
+.quiz-feedback.ok strong { color: #1E6B3E; }
+.quiz-feedback.no strong { color: #8a2f2e; }
 
 .quiz-next {
   width: 100%;
@@ -227,14 +224,14 @@
   margin-top: 25px;
   border: none;
   border-radius: 16px;
-  background: #2563eb;
+  background: #27A630;
   color: #fff;
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
 }
 
-.quiz-next:hover { background: #1d4ed8; }
+.quiz-next:hover { background: #1E8526; }
 
 /* ===========================================================
    Risultati
@@ -302,7 +299,7 @@
   border-radius: 3px;
   overflow: hidden;
 }
-.breakdown-bar-fill { height: 100%; background: var(--pb-blue); }
+.breakdown-bar-fill { height: 100%; background: #27A630; }
 .breakdown-score { font-family: var(--font-mono); width: 36px; text-align: right; }
 
 .results-actions {
@@ -343,11 +340,11 @@
 .dash-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 28px rgba(30, 78, 121, 0.14);
-  border-color: var(--pb-blue);
+  border-color: #27A630;
 }
 
 .dash-card:focus-visible {
-  outline: 3px solid var(--pb-blue);
+  outline: 3px solid #27A630;
   outline-offset: 2px;
 }
 
@@ -363,7 +360,7 @@
   font-size: 15px;
 }
 
-.dash-card.mode-pratica .dash-card-icon { background: var(--pb-blue-tint); color: var(--pb-blue); }
+.dash-card.mode-pratica .dash-card-icon { background: #E3F3E4; color: #27A630; }
 .dash-card.mode-esame .dash-card-icon { background: var(--pb-orange-tint); color: var(--pb-orange); }
 
 .dash-card h3 {
@@ -385,7 +382,7 @@
   font-size: 12px;
   letter-spacing: 0.6px;
   text-transform: uppercase;
-  color: var(--pb-blue);
+  color: #27A630;
 }
 
 .dash-card.mode-esame .cta { color: var(--pb-orange); }

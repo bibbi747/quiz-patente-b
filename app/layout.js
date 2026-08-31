@@ -32,6 +32,7 @@ export default function RootLayout({ children }) {
                 }}
               >
                 <Link href="/pratica">Pratica</Link>
+                <Link href="/precedenze">Precedenze</Link>
                 <Link href="/esame">Simulazione esame</Link>
 
                 <HeaderUser />

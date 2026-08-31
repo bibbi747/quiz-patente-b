@@ -15,6 +15,14 @@ export default function StatistichePage() {
   return (
     <main className="container">
       <div className="stat-page-header">
+        <img
+          src="/images/statistiche/decorazione.png"
+          alt=""
+          className="stat-page-hills"
+          width={450}
+          height={190}
+        />
+
         <h1>Le mie statistiche</h1>
         <p>Come sta andando la tua preparazione.</p>
       </div>

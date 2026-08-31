@@ -261,7 +261,7 @@ export default function QuizEngine({
 />
 
       <div className="quiz-card">
-        <span className="quiz-badge">{current.categoria}</span>
+        <span className="quiz-badge">Domanda {index + 1}</span>
 
         {current.segnale_correlato && (
           <img
@@ -276,10 +276,6 @@ export default function QuizEngine({
         )}
 
         <div className="quiz-question-card">
-
-  <div className="quiz-question-number">
-    Domanda {index + 1}
-  </div>
 
   <h2 className="quiz-question">
     {current.domanda}

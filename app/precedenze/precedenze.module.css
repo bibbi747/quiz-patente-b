@@ -1,0 +1,265 @@
+.wide{
+  max-width:1280px !important;
+}
+
+@media (max-width: 700px){
+  .wide{
+    max-width:100% !important;
+    padding-left:16px !important;
+    padding-right:16px !important;
+  }
+}
+
+.hero{
+  width:100%;
+  height:520px;
+  margin:40px 0 60px;
+  border-radius:30px;
+  overflow:hidden;
+  position:relative;
+  display:flex;
+  align-items:center;
+  background-image:url("/images/precedenze/precedenze-hero.png");
+  background-size:cover;
+  background-position:center;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(
+    to right,
+    rgba(255,255,255,0.94) 0%,
+    rgba(255,255,255,0.88) 28%,
+    rgba(255,255,255,0.45) 48%,
+    rgba(255,255,255,0) 65%
+  );
+}
+
+.heroText{
+  position:relative;
+  z-index:2;
+  width:520px;
+  padding:60px;
+}
+
+.heroBadge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:#DAE9D0;
+  color:#366A42;
+  padding:12px 20px;
+  border-radius:30px;
+  font-weight:bold;
+  font-size:16px;
+}
+
+.hero h1{
+  margin:30px 0 25px;
+  font-size:42px;
+  line-height:1.1;
+  font-weight:800;
+  color:#163a5a;
+  max-width:520px;
+}
+
+.hero p{
+  margin:0 0 30px;
+  font-size:22px;
+  line-height:1.45;
+  color:#526375;
+}
+
+.heroStats{
+  display:flex;
+  gap:18px;
+}
+
+.statPill{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:white;
+  padding:18px 25px;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(20,40,80,.10);
+}
+
+.statPillIcon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.statPillIconTrophy{
+  color:#f5a623;
+}
+
+.statPill strong{
+  display:block;
+  font-size:32px;
+  color:#163a5a;
+}
+
+.statPill small{
+  display:block;
+  color:#667085;
+  font-size:15px;
+}
+
+@media(max-width:900px){
+  .hero{
+    width:90%;
+    height:auto;
+    min-height:650px;
+  }
+  .heroText{
+    width:auto;
+    padding:40px;
+  }
+  .hero h1{
+    font-size:44px;
+  }
+}
+
+.exampleCard{
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 8px 24px rgba(0,0,0,.05);
+  display:grid;
+  grid-template-columns:48px 260px 1fr 220px;
+  gap:32px;
+  align-items:start;
+  padding:32px 36px;
+}
+
+@media (max-width: 900px){
+  .exampleCard{
+    grid-template-columns:1fr;
+    padding:26px 22px;
+  }
+  .exampleNumber{
+    margin:0 auto;
+  }
+  .diagramWrapper{
+    width:300px;
+    height:300px;
+    margin:0 auto;
+  }
+  .exampleContent h2{
+    font-size:1.3rem;
+  }
+  .exampleContent p{
+    font-size:1rem;
+  }
+  .titleRow{
+    justify-content:center;
+    text-align:center;
+  }
+}
+
+.exampleNumber{
+  background:var(--pb-blue);
+  color:white;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  font-size:.85rem;
+}
+
+.exampleTag{
+  background:#EEF6FF;
+  color:var(--pb-blue);
+  padding:4px 12px;
+  border-radius:999px;
+  font-size:.72rem;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+.diagramWrapper{
+  background:#F7FAFD;
+  border-radius:14px;
+  overflow:hidden;
+  width:260px;
+  height:260px;
+}
+
+.titleRow{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+
+.exampleContent h2{
+  font-size:1.2rem;
+  margin:0;
+  color:var(--pb-navy);
+}
+
+.exampleContent p{
+  color:#556070;
+  line-height:1.7;
+  font-size:.98rem;
+  margin-bottom:14px;
+}
+
+.orderBox{
+  background:#EEF8F1;
+  border-radius:14px;
+  padding:14px 16px;
+}
+
+.orderLabel{
+  display:block;
+  text-align:center;
+  font-weight:700;
+  color:#20844F;
+  font-size:.78rem;
+  margin-bottom:10px;
+}
+
+.orderRow{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.vehicleCircle{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  font-weight:800;
+  font-size:.85rem;
+}
+
+.arrow{
+  color:#98A2B3;
+  font-size:1.1rem;
+}
+
+.tipBox{
+  background:#FFF8E6;
+  border-left:3px solid #F4B740;
+  padding:10px 12px;
+  border-radius:10px;
+  color:#8A6A00;
+  font-size:.82rem;
+  line-height:1.5;
+}
