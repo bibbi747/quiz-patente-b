@@ -42,14 +42,16 @@ html, body {
   background: var(--pb-fog);
   color: var(--pb-ink);
   font-family: var(--font-body);
+  overflow-x: hidden;
 }
 
-/* Ingrandimento generale del sito: dato che i testi usano px fissi in
-   tanti file diversi, non c'è un'unica variabile da cambiare — questa
-   proprietà "zooma" l'intera pagina (testo e spaziature insieme,
-   proporzionalmente) senza dover toccare decine di file. */
-body {
-  zoom: 1.3;
+/* Rete di sicurezza responsive: nessuna immagine può mai essere più
+   larga del suo contenitore. Senza questa regola, un'unica immagine
+   con dimensioni "naturali" più larghe dello schermo spinge fuori
+   tutta la pagina su mobile, causando lo scroll orizzontale. */
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 a { color: inherit; }

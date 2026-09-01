@@ -222,6 +222,34 @@ background:transparent;
 
     }
 
+    .pratica-hero-stats{
+
+        flex-wrap:wrap;
+
+    }
+
+    .stat-pill{
+
+        padding:14px 18px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .pratica-hero-stats{
+
+        flex-direction:column;
+
+    }
+
+    .stat-pill{
+
+        width:100%;
+
+    }
+
 }
 /* OVERRIDE HERO TEST */
 
@@ -229,6 +257,12 @@ background:transparent;
     font-size:42px !important;
     line-height:1.1 !important;
     max-width:520px;
+}
+
+@media(max-width:600px){
+    .pratica-hero h1 {
+        font-size:30px !important;
+    }
 }
 /* ===========================================================
    SEARCH BAR
@@ -331,6 +365,8 @@ background:transparent;
     background:none;
 
     font-size:15px;
+
+    min-width:0;
 
 }
 
@@ -542,7 +578,9 @@ background:transparent;
         align-items:flex-start;
 
     }
-
+    .filter-group{
+        width:100%;
+    }
 }
 /* ===========================================================
    CHAPTER GRID
@@ -602,7 +640,7 @@ background:transparent;
 
     display:grid;
 
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(3,minmax(0,1fr));
 
     gap:24px;
 
@@ -610,18 +648,6 @@ background:transparent;
 
 }
 
-
-.chapters-grid-flat{
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:24px;
-
-    width:100%;
-
-}
 
 .chapters-grid-flat{
 
@@ -635,18 +661,21 @@ background:transparent;
 
 }
 
-@media (max-width:1200px){
+/* Passaggio intermedio a 2 colonne: evita la fascia di larghezza in
+   cui 3 colonne diventano troppo strette e il testo delle card
+   comincia a sovrapporsi invece di andare a capo. */
+@media (max-width:1000px){
 
     .chapters-grid,
     .chapters-grid-flat{
 
-        grid-template-columns:repeat(3,minmax(0,1fr));
+        grid-template-columns:repeat(2,minmax(0,1fr));
 
     }
 
 }
 
-@media (max-width:700px){
+@media (max-width:640px){
 
     .chapters-grid,
     .chapters-grid-flat{
@@ -731,9 +760,13 @@ background:transparent;
 
     display:flex;
 
+    flex-wrap:wrap;
+
     justify-content:space-between;
 
     align-items:flex-start;
+
+    row-gap:4px;
 
 }
 
@@ -750,6 +783,8 @@ background:transparent;
     color:#3FA847;
 
     text-transform:uppercase;
+
+    white-space:nowrap;
 
 }
 
@@ -1092,4 +1127,31 @@ background:transparent;
   .progress-box {
     width: 100%;
   }
+}
+
+/* ===========================================================
+   FIX — "Accedi per salvare i tuoi progressi" mancava del tutto
+   la classe .login-hint, il browser mostrava lo stile grezzo
+   =========================================================== */
+.login-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  background: #E3F3E4;
+  color: #1E6B3E;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 18px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.login-hint:hover {
+  background: #D6E9CE;
+}
+
+.login-hint-arrow {
+  font-weight: 700;
 }
