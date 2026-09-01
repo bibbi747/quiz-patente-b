@@ -272,7 +272,7 @@
 
 .results-sub {
   color: var(--pb-ink-soft);
-  font-size: 14px;
+  font-size: 15px;
   margin: 0 0 28px;
 }
 
@@ -370,7 +370,7 @@
 }
 
 .dash-card p {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--pb-ink-soft);
   line-height: 1.55;
   margin: 0;

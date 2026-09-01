@@ -36,7 +36,7 @@
 
 .home-hero-text h1 {
   font-family: var(--font-display);
-  font-size: 41.5px;
+  font-size: clamp(27px, 6vw, 41px);
   line-height: 1.2;
   margin: 0 0 14px;
   color: #1E3930;
@@ -72,7 +72,6 @@
     background: rgba(255, 255, 255, 0.88);
     border-radius: 0 0 24px 24px;
   }
-  .home-hero-text h1 { font-size: 32px; }
   .home-hero-text p { margin-left: auto; margin-right: auto; }
   .home-hero-actions { justify-content: center; }
 }
@@ -80,7 +79,6 @@
 @media (max-width: 400px) {
   .home-hero { border-radius: 0; margin: 0 0 28px; }
   .home-hero-text { padding: 22px 16px; }
-  .home-hero-text h1 { font-size: 27.5px; }
   .home-hero-text p { font-size: 18.5px; }
   .home-hero-actions { flex-direction: column; align-items: stretch; }
   .home-hero-actions a { text-align: center; }
@@ -223,7 +221,7 @@
 
 .mini-chapter-icon { font-size: 22px; color: var(--pb-blue); }
 .mini-chapter-title { font-size: 16.5px; font-weight: 500; margin: 7px 0 1px; }
-.mini-chapter-count { font-size: 15px; color: var(--pb-ink-soft); }
+.mini-chapter-count { font-size: 16px; color: var(--pb-ink-soft); }
 
 .home-featured-grid {
   display: grid;
@@ -367,7 +365,7 @@
   justify-content: center;
 }
 .feature-item-title { font-size: 17px; font-weight: 500; color: var(--pb-ink); margin: 0; }
-.feature-item-sub { font-size: 15.5px; color: var(--pb-ink-soft); margin: 2px 0 0; }
+.feature-item-sub { font-size: 16px; color: var(--pb-ink-soft); margin: 2px 0 0; }
 
 /* ===========================================================
    Promo row — recensione Amazon + download PDF per capitolo

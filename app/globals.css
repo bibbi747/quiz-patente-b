@@ -85,7 +85,7 @@ a { color: inherit; }
   display: inline-block;
   background: var(--pb-amber);
   color: var(--pb-amber-ink);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   padding: 12px 18px;
   border-radius: var(--radius-m);
@@ -100,7 +100,7 @@ a { color: inherit; }
   display: inline-block;
   background: var(--pb-navy);
   color: var(--pb-white);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   padding: 12px 18px;
   border-radius: var(--radius-m);
@@ -113,7 +113,7 @@ a { color: inherit; }
   display: inline-block;
   background: var(--pb-white);
   color: var(--pb-ink);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   padding: 12px 18px;
   border-radius: var(--radius-m);
@@ -127,7 +127,7 @@ a { color: inherit; }
   flex: 1;
   padding: 13px;
   border-radius: var(--radius-m);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;

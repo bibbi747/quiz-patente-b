@@ -9,7 +9,7 @@
 
 .stat-page-header h1 {
   font-family: var(--font-display);
-  font-size: 32px;
+  font-size: clamp(24px, 5vw, 32px);
   color: #0E3D24;
   margin: 0 0 6px;
   position: relative;
@@ -125,7 +125,7 @@
 
 .stat-summary-label {
   display: block;
-  font-size: 14.5px;
+  font-size: 15px;
   color: var(--pb-ink-soft);
   margin-bottom: 2px;
 }

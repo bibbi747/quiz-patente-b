@@ -95,13 +95,15 @@ background:transparent;
 
     margin:30px 0 25px;
 
-    font-size:56px;
+    font-size:clamp(28px, 6vw, 42px);
 
-    line-height:1;
+    line-height:1.1;
 
     font-weight:800;
 
     color:#163a5a;
+
+    max-width:520px;
 
 }
 
@@ -216,12 +218,6 @@ background:transparent;
     }
 
 
-    .pratica-hero h1{
-
-        font-size:44px;
-
-    }
-
     .pratica-hero-stats{
 
         flex-wrap:wrap;
@@ -296,19 +292,6 @@ background:transparent;
 
     }
 
-}
-/* OVERRIDE HERO TEST */
-
-.pratica-hero h1 {
-    font-size:42px !important;
-    line-height:1.1 !important;
-    max-width:520px;
-}
-
-@media(max-width:600px){
-    .pratica-hero h1 {
-        font-size:30px !important;
-    }
 }
 /* ===========================================================
    SEARCH BAR
@@ -541,7 +524,7 @@ background:transparent;
 
     color:#4A5565;
 
-    font-size:14px;
+    font-size:15px;
 
     font-weight:600;
 
@@ -581,7 +564,7 @@ background:transparent;
 
 .filter-sort label{
 
-    font-size:14px;
+    font-size:15px;
 
     color:#667085;
 
@@ -601,7 +584,7 @@ background:transparent;
 
     color:#14365D;
 
-    font-size:14px;
+    font-size:16px;
 
     outline:none;
 
@@ -920,7 +903,7 @@ background:transparent;
 
     color:#667085;
 
-    font-size:13px;
+    font-size:14px;
 
     font-weight:600;
 
@@ -970,7 +953,7 @@ background:transparent;
 
 .chapter-description{
 
-    font-size:14px;
+    font-size:15px;
 
     margin:8px 0 14px;
 
@@ -1102,7 +1085,7 @@ background:transparent;
 .chapters-title p {
   margin: 6px 0 0;
   color: #667085;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .progress-box {
@@ -1141,7 +1124,7 @@ background:transparent;
 }
 
 .progress-info strong {
-  font-size: 13px;
+  font-size: 14px;
   color: #667085;
   font-weight: 600;
 }
@@ -1186,7 +1169,7 @@ background:transparent;
   text-decoration: none;
   background: #E3F3E4;
   color: #1E6B3E;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   padding: 12px 18px;
   border-radius: 12px;
@@ -1200,4 +1183,81 @@ background:transparent;
 
 .login-hint-arrow {
   font-weight: 700;
+}
+
+/* ===========================================================
+   PAGINA /scarica — mancavano tutte le classi usate da questo
+   componente (part-eyebrow, part-title, chapter-tab e figli):
+   la pagina veniva mostrata senza nessuno stile, solo link
+   grezzi del browser.
+   =========================================================== */
+.part-eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #1E6B3E;
+  margin: 0 0 -8px;
+}
+
+.part-title {
+  margin: 0;
+  font-size: clamp(22px, 4vw, 30px);
+  color: #14365D;
+}
+
+.chapter-tab {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid #E5EDF6;
+  border-radius: var(--radius-m);
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 14px rgba(20, 54, 93, 0.05);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.chapter-tab:hover {
+  border-color: #27A630;
+  transform: translateY(-2px);
+}
+
+.chapter-tab.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
+
+.chapter-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #27A630;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.chapter-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--pb-ink);
+  line-height: 1.35;
+}
+
+.chapter-count {
+  flex-shrink: 0;
+  font-size: 14px;
+  color: var(--pb-ink-soft);
+  white-space: nowrap;
+  margin-top: 3px;
 }
